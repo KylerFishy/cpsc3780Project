@@ -1,0 +1,33 @@
+In the following, A refers to the server while B refers to one client. Essentially, A needs 
+to set up two sockets, one for transferring data while the other for accepting ACK/NAK. 
+So you need to change the general procedure in the above table between the server and 
+client for this purpose. 
+Before sending out a frame, A calculates the sum of the ASCII values of all characters in 
+it and generates an even parity bit. A needs to send the parity bit, along with the frame, to 
+B. For every five frames that A sends out, there is one frame that has a bad parity bit. 
+Such a frame could be the first frame or could be the fifth frame. You decide this using a 
+random number. For B, upon receiving a frame from A, it needs to check the parity bit 
+with the frame. If the parity bit is good, B sends an ACK to A. Otherwise, it sends an 
+NAK to B and asks for a retransmission of the frame. 
+Once the client receives a correct entire line, it needs to print it out on its screen. 
+The data file(s) in your program should be ASCII based and contain more than 1000 lines.  
+Some lines can have only a few characters while others can have, say, more than 500 
+characters, to simulate the deassembly and reassembly operations. One possible way to 
+do this is to download document(s) from the Internet and then reformat them. Note that 
+the file content is not important. When you reformat a file, please add a line number to 
+each line such that the marker can trace it. 
+Both A and B should be floating, in the sense when A is installed on 
+host1
+, through 
+host1
+B can connect and get service from A. When A changes to 
+host2
+, then B needs to make a 
+request to 
+host2
+. So when B makes a request to connect to A, its connection request 
+should contain the host information of A. 
+You are required to design the protocol between A and B. There are two scenarios for 
+you to design and implement. 
+(S1) There is one A and one B. B makes a request and A serves the request. This process 
+continues until a data file is finished transferring. 
